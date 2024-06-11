@@ -1,26 +1,5 @@
-type Planet = {
-  name: string;
-  rotation_period: number;
-  orbital_period: number;
-  diameter: number;
-  climate: string;
-  gravity: string;
-  terrain: string;
-  surface_water: number;
-  population: number;
-  residents: string[];
-  films: string[];
-  created: string;
-  edited: string;
-  url: string;
-};
-
-type PlanetResponse = {
-  count: number;
-  next: string | null;
-  previous: string | null;
-  results: Planet[];
-};
+import { getPlanets } from "../services/planet.service";
+import { PlanetResponse } from "../types/planet.type";
 
 export default function Home() {
   let page = 1;
@@ -48,10 +27,9 @@ export default function Home() {
 
   const element = document.createElement("div");
   const innerDiv = document.createElement("div");
-  const getPlanets = async (page = 1) => {
+  const displayPlanets = async (page = 1) => {
     innerDiv.innerHTML = "";
-    const response = await fetch("https://swapi.dev/api/planets?page=" + page);
-    const data: PlanetResponse = await response.json();
+    const data = await getPlanets(page);
     const ul = document.createElement("ul");
     data.results.forEach((planet) => {
       const li = document.createElement("li");
@@ -70,6 +48,6 @@ export default function Home() {
   p.textContent = "Vous êtes sur la page de démonstration";
   element.appendChild(h1);
   element.appendChild(p);
-  getPlanets();
+  displayPlanets();
   return element;
 }
