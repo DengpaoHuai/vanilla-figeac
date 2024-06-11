@@ -36,6 +36,20 @@ export default function CreateFromton() {
     const formData = new FormData(e.target as HTMLFormElement);
     const data = Object.fromEntries(formData.entries());
     console.log(data);
+    const body = JSON.stringify(data);
+    console.log(body);
+
+    fetch("https://crudcrud.com/api/3db7dd93b4464effbb3e8a86838a167c/fromton", {
+      method: "POST",
+      body: body,
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => console.log(data));
   });
   return element;
 }
