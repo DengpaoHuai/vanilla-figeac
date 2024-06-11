@@ -94,3 +94,28 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.create-fromton-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.create-fromton-form input {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.create-fromton-form button {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #646cff;
+  color: white;
+  font-weight: bold;
+}

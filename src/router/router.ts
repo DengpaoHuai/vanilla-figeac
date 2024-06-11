@@ -1,3 +1,4 @@
+import CreateFromton from "../pages/CreateFromton";
 import Demo from "../pages/Demo";
 import Home from "../pages/Home";
 
@@ -8,6 +9,7 @@ type Routes = {
 const routes: Routes = {
   "/": Home,
   "/demo": Demo,
+  "/create_fromton": CreateFromton,
 };
 
 function router() {
