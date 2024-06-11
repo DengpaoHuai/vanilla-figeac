@@ -1,6 +1,8 @@
 import { DateTime } from "luxon";
+import { getFromtonById, updateFromton } from "../services/fromton.service";
 
 export default function UpdateFromton() {
+  const fromtonId = localStorage.getItem("fromton");
   const element = document.createElement("div");
   element.classList.add("create-fromton-form");
   const form = document.createElement("form");
@@ -46,7 +48,17 @@ export default function UpdateFromton() {
       price,
       expirationDate: dt.toMillis().toString(),
     };
-    //const result = await createFromton(fromton);
+    const result = fromtonId && (await updateFromton(fromtonId, fromton));
+    history.back();
   });
+
+  fromtonId &&
+    getFromtonById(fromtonId).then((fromton) => {
+      input.value = fromton.name;
+      input2.value = fromton.price;
+      input3.value =
+        DateTime.fromMillis(parseInt(fromton.expirationDate)).toISODate() ?? "";
+    });
+
   return element;
 }

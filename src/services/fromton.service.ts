@@ -36,3 +36,24 @@ export const deleteFromton = async (id: string) => {
     }
   );
 };
+
+export const getFromtonById = async (id: string) => {
+  const response = await fetch(
+    "https://crudcrud.com/api/75a25ac1f68641059e5955e067529903/fromton/" + id
+  );
+  const data: Fromton = await response.json();
+  return data;
+};
+
+export const updateFromton = (id: string, fromage: Omit<Fromton, "_id">) => {
+  return fetch(
+    "https://crudcrud.com/api/75a25ac1f68641059e5955e067529903/fromton/" + id,
+    {
+      method: "PUT",
+      body: JSON.stringify(fromage),
+      headers: {
+        "content-type": "application/json",
+      },
+    }
+  );
+};
