@@ -1,9 +1,13 @@
 import { Fromton } from "../types/fromton.type";
 
-export const createFromton = async (fromton: Omit<Fromton, "_id">) => {
-  const body = JSON.stringify(fromton);
+export const createFromton = async ({
+  name,
+  price,
+  expirationDate,
+}: Omit<Fromton, "_id">) => {
+  const body = JSON.stringify({ name, price, expirationDate });
   const response = await fetch(
-    "https://crudcrud.com/api/3db7dd93b4464effbb3e8a86838a167c/fromton",
+    "https://crudcrud.com/api/75a25ac1f68641059e5955e067529903/fromton",
     {
       method: "POST",
       body: body,
@@ -18,8 +22,17 @@ export const createFromton = async (fromton: Omit<Fromton, "_id">) => {
 
 export const getFromtons = async () => {
   const response = await fetch(
-    "https://crudcrud.com/api/3db7dd93b4464effbb3e8a86838a167c/fromton"
+    "https://crudcrud.com/api/75a25ac1f68641059e5955e067529903/fromton"
   );
   const data: Fromton[] = await response.json();
   return data;
+};
+
+export const deleteFromton = async (id: string) => {
+  const response = await fetch(
+    "https://crudcrud.com/api/75a25ac1f68641059e5955e067529903/fromton/" + id,
+    {
+      method: "DELETE",
+    }
+  );
 };

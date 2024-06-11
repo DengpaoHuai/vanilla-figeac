@@ -2,6 +2,7 @@ import CreateFromton from "../pages/CreateFromton";
 import Demo from "../pages/Demo";
 import Home from "../pages/Home";
 import ListFromton from "../pages/ListFromton";
+import UpdateFromton from "../pages/UpdateFromton";
 
 /*type Routes = {
   [key: string]: () => HTMLDivElement;
@@ -15,6 +16,7 @@ const routes: Routes = {
   "/demo": Demo,
   "/create_fromton": CreateFromton,
   "/list_fromton": ListFromton,
+  "/update_fromton": UpdateFromton,
 };
 
 function router() {

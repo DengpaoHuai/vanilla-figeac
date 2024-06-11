@@ -25,6 +25,10 @@ export default function Home() {
     element.appendChild(button);
   };
 
+  document.addEventListener("scroll", (e) => {
+    console.log(e);
+  });
+
   const element = document.createElement("div");
   const innerDiv = document.createElement("div");
   const displayPlanets = async (page = 1) => {
@@ -46,8 +50,13 @@ export default function Home() {
   h1.textContent = "Bienvenue sur la page de démonstration !";
   const p = document.createElement("p");
   p.textContent = "Vous êtes sur la page de démonstration";
+  const a = "<a href='/demo' data-link>Aller à la page de démo</a>";
+  const a1 = "<a href='/demo'>Aller à la page de démo</a>";
+
   element.appendChild(h1);
   element.appendChild(p);
   displayPlanets();
+  element.innerHTML += a;
+  element.innerHTML += a1;
   return element;
 }

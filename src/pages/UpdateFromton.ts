@@ -1,6 +1,6 @@
-import { createFromton } from "../services/fromton.service";
 import { DateTime } from "luxon";
-export default function CreateFromton() {
+
+export default function UpdateFromton() {
   const element = document.createElement("div");
   element.classList.add("create-fromton-form");
   const form = document.createElement("form");
@@ -46,12 +46,7 @@ export default function CreateFromton() {
       price,
       expirationDate: dt.toMillis().toString(),
     };
-    const result = await createFromton(fromton);
-    console.log(result);
-    const formatId = (id: string) => {
-      console.log(id);
-    };
-    formatId(result._id);
+    //const result = await createFromton(fromton);
   });
   return element;
 }
