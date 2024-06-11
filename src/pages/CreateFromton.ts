@@ -1,3 +1,6 @@
+import { createFromton } from "../services/fromton.service";
+import { Fromton } from "../types/fromton.type";
+
 export default function CreateFromton() {
   const element = document.createElement("div");
   element.classList.add("create-fromton-form");
@@ -10,7 +13,7 @@ export default function CreateFromton() {
   form.appendChild(label);
   input.type = "text";
   input.placeholder = "Entrez le nom du fromton";
-  input.name = "name";
+  input.name = "fromtonName";
   input.id = "name";
   form.appendChild(input);
 
@@ -31,25 +34,22 @@ export default function CreateFromton() {
   element.appendChild(form);
   element.style.backgroundColor = "lightblue";
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    const data = Object.fromEntries(formData.entries());
-    console.log(data);
-    const body = JSON.stringify(data);
-    console.log(body);
-
-    fetch("https://crudcrud.com/api/3db7dd93b4464effbb3e8a86838a167c/fromton", {
-      method: "POST",
-      body: body,
-      headers: {
-        "content-type": "application/json",
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => console.log(data));
+    const fromTonName: string = form.fromtonName.value;
+    const price: string = form.fromtonName.value;
+    const date: string = form.fromtonName.value;
+    const fromton = {
+      name: fromTonName,
+      price,
+      expirationDate: date,
+    };
+    const result = await createFromton(fromton);
+    console.log(result);
+    const formatId = (id: string) => {
+      console.log(id);
+    };
+    formatId(result._id);
   });
   return element;
 }
